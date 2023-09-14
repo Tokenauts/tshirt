@@ -1,0 +1,16 @@
+"use client";
+import Image from "next/image";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import Admin from "../components/Admin";
+import App from "../components/App";
+import GetProduct from "../components/Product/getProduct";
+import Navbar from "../components/Home/Navbar";
+export default function Home() {
+  return (
+    <>
+      <Navbar />
+      {/* <Admin /> */}
+      <GetProduct />
+    </>
+  );
+}

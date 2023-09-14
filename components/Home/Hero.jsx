@@ -1,5 +1,9 @@
 import React from "react";
+import { useAccount } from "wagmi";
+
 const Hero = () => {
+  const { address, isConnecting, isDisconnected } = useAccount();
+
   return (
     <div>
       <section>
@@ -10,7 +14,7 @@ const Hero = () => {
                 <div className="max-w-xl text-center lg:text-left">
                   <div>
                     <p className="text-2xl font-medium tracking-tight text-black sm:text-4xl">
-                      I am a short heading
+                      Heading
                     </p>
                     <p className="max-w-xl mt-4 text-base tracking-tight text-gray-600">
                       Use this paragraph to share information about your company

@@ -1,10 +1,11 @@
-import "@rainbow-me/rainbowkit/styles.css";
+"use client";
+
+import React from "react";
 import {
-  getDefaultWallets,
   RainbowKitProvider,
-  midnightTheme,
+  getDefaultWallets,
+  connectorsForWallets,
 } from "@rainbow-me/rainbowkit";
-import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import {
   mainnet,
   polygon,
@@ -12,9 +13,9 @@ import {
   sepolia,
   polygonMumbai,
 } from "wagmi/chains";
+
+import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { publicProvider } from "wagmi/providers/public";
-import Navbar from "@/components/Home/Navbar";
-import App from "@/components/App";
 
 const { chains, publicClient } = configureChains(
   [mainnet, polygon, optimism, sepolia, polygonMumbai],
@@ -33,16 +34,14 @@ const wagmiConfig = createConfig({
   publicClient,
 });
 
-export default function Home() {
+const Providers = ({ children }) => {
   return (
     <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider
-        chains={chains}
-        modalSize="compact"
-        theme={midnightTheme()}
-      >
-        <App />
+      <RainbowKitProvider chains={chains} modalSize="compact">
+        {children}
       </RainbowKitProvider>
     </WagmiConfig>
   );
-}
+};
+
+export default Providers;
